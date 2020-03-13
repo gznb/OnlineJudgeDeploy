@@ -43,8 +43,21 @@ services:
       - TOKEN=CHANGE_THIS
       # - judger_debug=1
   
+  oj-rsync-master:
+    image: registry.cn-hangzhou.aliyuncs.com/onlinejudge/oj_rsync
+    container_name: oj-rsync-master
+    volumes:
+      - $PWD/data/backend/test_case:/test_case:ro
+      - $PWD/data/rsync_master:/log
+    environment:
+      - RSYNC_MODE=master
+      - RSYNC_USER=ojrsync
+      - RSYNC_PASSWORD=qwer1234
+    ports:
+      - "0.0.0.0:873:873"
+
   oj-backend:
-    image: registry.cn-hangzhou.aliyuncs.com/onlinejudge/oj_backend
+    image: registry.cn-hangzhou.aliyuncs.com/gznb/hnfnu:1.0
     container_name: oj-backend
     restart: always
     depends_on:
