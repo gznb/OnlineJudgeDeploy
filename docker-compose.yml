@@ -44,7 +44,7 @@ services:
       # - judger_debug=1
       
   oj-backend:
-    image: registry.cn-hangzhou.aliyuncs.com/gznb/hnfnu:1.0
+    image: registry.cn-hangzhou.aliyuncs.com/gznb/hnfnu:1.1
     container_name: oj-backend
     restart: always
     depends_on:
